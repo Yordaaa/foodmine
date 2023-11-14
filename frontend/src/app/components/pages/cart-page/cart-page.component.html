@@ -30,7 +30,7 @@
         </select>
       </div>
       <div>
-        {{ cartItem.price | currency }}
+        {{ cartItem.price | currency:'ETB' }}
       </div>
       <div>
         <button class="remove-button" (click)="removeFromCart(cartItem)">
@@ -42,7 +42,7 @@
   <div class="checkout">
     <div>
       <div class="food-count">{{ cart.totalCount }}</div>
-      <div class="total-price">{{ cart.totalPrice | currency }}</div>
+      <div class="total-price">{{ cart.totalPrice | currency:'ETB' }}</div>
     </div>
     <a routerLink="/checkout">Proceed to Checkout</a>
   </div>

@@ -105,7 +105,7 @@ export const sample_foods: any[] = [
 export const sample_tags: any[] = [
   { name: 'All', count: 9 },
   { name: 'FastFood', count: 4 },
-  { name: 'Pizza', count: 2 },
+  { name: 'Pizza', count: 3 },
   { name: 'Lunch', count: 6 },
   { name: 'SlowFood', count: 4 },
   { name: 'Hamburger', count: 1 },

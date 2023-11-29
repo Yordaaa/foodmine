@@ -15,7 +15,6 @@ export class UserService {
   private userSubject =
   new BehaviorSubject<User>(this.getUserFromLocalStorage());
   public userObservable:Observable<User>;
-  static userObservable: any;
   constructor(private http:HttpClient, private toastrService:ToastrService) {
     this.userObservable = this.userSubject.asObservable();
   }

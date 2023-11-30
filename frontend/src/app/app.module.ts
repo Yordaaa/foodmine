@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 import { HomeComponent } from './components/pages/home/home.component';
-import { RatingModule } from 'ng-starrating';
+
 import { SearchComponent } from './components/partials/search/search.component';
 import { TagsComponent } from './components/partials/tags/tags.component';
 import { FoodPageComponent } from './components/pages/food-page/food-page.component';
@@ -23,6 +23,9 @@ import { DefaultButtonComponent } from './components/partials/default-button/def
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { LoadingComponent } from './components/partials/loading/loading.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
+import { MapComponent } from './components/partials/map/map.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,27 +45,26 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
     DefaultButtonComponent,
     RegisterPageComponent,
     LoadingComponent,
-    
+    CheckoutPageComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    
+
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
-      timeOut:3000,
-      positionClass:'toast-bottom-right',
-      newestOnTop:false
-    })
-
-   
-    
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      newestOnTop: false,
+    }),
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi:true}
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
